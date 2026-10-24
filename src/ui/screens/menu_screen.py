@@ -2,6 +2,10 @@ import pygame
 from src.ui.theme import THEME
 from src.game import State
 
+import sys
+
+IS_BROWSER = sys.platform == "emscripten"
+
 class MenuScreen:
     def __init__(self, screen, config, start_button, how_to_button, quit_button) -> None:
         self.screen = screen
@@ -25,7 +29,7 @@ class MenuScreen:
             return 'game'
         elif self.how_to_button.is_hovered(pos):
             return 'how_to_play'
-        elif self.quit_button.is_hovered(pos):
+        elif not IS_BROWSER and self.quit_button.is_hovered(pos):
             return 'quit'
         return None
 
@@ -63,4 +67,5 @@ class MenuScreen:
         self.draw_title()
         self.start_button.draw(self.screen)
         self.how_to_button.draw(self.screen)
-        self.quit_button.draw(self.screen)
+        if not IS_BROWSER:
+            self.quit_button.draw(self.screen)
