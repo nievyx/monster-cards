@@ -13,4 +13,4 @@ fi
 .venv/bin/python -m pip install -r requirements.txt
 
 # run game
-.venv/bin/python -m src/main
+.venv/bin/python -m src.main
