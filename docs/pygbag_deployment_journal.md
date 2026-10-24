@@ -100,3 +100,36 @@ whether they are needed.
 - Original notes: `docs/dev_steps_for_pygbag.md`, `docs/pygbag_browser_port_notes.md`
 - Pygbag configuration source: https://github.com/pygame-web/pygbag
 - Packaging overview: https://deepwiki.com/pygame-web/pygbag/3.2-application-structure
+
+
+### Pygbag Startup Screen — Confusing Click Area
+
+**Date:** 24 October 2026  
+**Status:** Working — low-priority UX issue  
+**Environment:** Fedora Linux, Pygbag 0.9.3, Firefox
+
+#### Observation
+
+Pygbag displays a grey startup screen with a green message:
+
+> Ready to start! Please click/touch page
+
+The green rectangle resembles a clickable button, making it unclear where the user should click.
+
+#### Investigation
+
+- Clicking anywhere on the page successfully starts the game.
+- Clicking the grey background works.
+- The startup screen is provided by Pygbag, not Monster Cards.
+- This is a usability issue, not a broken game hitbox.
+
+#### Decision
+
+No code changes required before the initial deployment.
+
+**Future improvement:** Consider customising the startup screen to make the click-anywhere behaviour clearer.
+
+#### Test Result
+
+**PASS:** Browser startup confirmed working locally after restoring the original Pygbag packaging behaviour.
+
