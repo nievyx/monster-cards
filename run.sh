@@ -47,11 +47,3 @@ uv pip install -r requirements.txt
 
 # run game
 .venv/bin/python -m src.main
-
-# Legacy pip version
-
-# install requirements
-#.venv/bin/python -m pip install -r requirements.txt
-
-# run game
-#.venv/bin/python -m src/main
