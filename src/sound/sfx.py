@@ -1,4 +1,10 @@
 import os
+import wave
+
+import sys
+
+IS_BROWSER = sys.platform == "emscripten"
+
 import pygame
 
 class SFX:
@@ -17,7 +23,14 @@ class SFX:
         """Checks for spell and plays sound if available,
         Caches sound if sound is not already loaded"""
         sounds_name = spell.sfx_name
-        sound_path = os.path.join(self.base_path, 'spells',f'{sounds_name}.wav')
+
+        if IS_BROWSER:
+            MUSIC_EXTENTSION = '-pygbag.ogg'
+        else:
+            MUSIC_EXTENTSION = '.wav'
+
+
+        sound_path = os.path.join(self.base_path, 'spells',f'{sounds_name}{MUSIC_EXTENTSION}')
 
         if not os.path.exists(sound_path):
             print(f"[SFX WARNING] Missing sound: {sound_path}")
