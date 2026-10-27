@@ -34,11 +34,11 @@ http://localhost:8000/
 
 ## Important changes made
 
-### 1. Added root `main.py`
+### 1. Added root `../../main.py`
 
-Pygbag requires a root-level `main.py`, even though the real game entry point is `src/main.py`.
+Pygbag requires a root-level `../../main.py`, even though the real game entry point is `../../src/main.py`.
 
-Root `main.py` should look like this:
+Root `../../main.py` should look like this:
 
 ```python
 """
@@ -61,7 +61,7 @@ The PEP 723 dependency block is important because it tells pygbag to load `pygam
 
 ---
 
-### 2. Updated `src/main.py`
+### 2. Updated `../../src/main.py`
 
 Make sure this line uses `Config()` with brackets:
 
@@ -115,7 +115,7 @@ Config.create_players() missing 1 required positional argument: 'self'
 
 ### 3. Added async browser loop
 
-In `src/game/game_controller.py`, add a browser version of the game loop:
+In `../../src/game/game_controller.py`, add a browser version of the game loop:
 
 ```python
 async def start_async(self):
@@ -336,7 +336,7 @@ Later, fix by bundling a `.ttf` font and loading it directly instead of relying 
 
 ### 5. Build output should probably be ignored
 
-Add to `.gitignore`:
+Add to `../../.gitignore`:
 
 ```gitignore
 build/
@@ -345,7 +345,7 @@ __pycache__/
 *.pyc
 ```
 
-Do not commit `build/` unless intentionally storing generated web output.
+Do not commit `../../build` unless intentionally storing generated web output.
 
 ---
 

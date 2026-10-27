@@ -20,20 +20,20 @@
 - GitHub Pages' existing live demo **has not been replaced** during this session.
 - Pygbag **0.9.3** reported **802 files packed** in the uploaded build log.
 - The log reported: `WARNING: No pygbag.ini found!`, followed by `Ignored dirs: []` and `Ignored files: []`.
-- The build log included files under `.venv/` (Python 3.13, installed Pygame, libraries, tests and documentation), `docs/`, `scripts/`, and the root `assets/` directory containing an **82.9 MB gameplay MP4**.
+- The build log included files under `../../.venv` (Python 3.13, installed Pygame, libraries, tests and documentation), `..`, `../../scripts`, and the root `../../assets` directory containing an **82.9 MB gameplay MP4**.
 - Approximate total local project directory size reported: **1,122,280,323 bytes (~1.05 GiB)**, including `.venv`. **This is not the same as the browser download size.**
 - A previous published browser build downloaded approximately **102 MB** of packaged game data in the browser Network tab; that is a separate measurement from this new local build.
 - Pygbag auto-converted several WAV/MP3 files to `*-pygbag.ogg` during the build. Browser audio function has not yet been established.
 
 ## Why trim the package?
 
-Files required to develop or showcase the project need not be downloaded by every visitor. In particular, local Linux Pygame libraries inside `.venv/`, documentation, helper scripts, and a recorded gameplay video are not required by the browser game. Removing them from the **package** does not require deleting them from Git or the local project.
+Files required to develop or showcase the project need not be downloaded by every visitor. In particular, local Linux Pygame libraries inside `../../.venv`, documentation, helper scripts, and a recorded gameplay video are not required by the browser game. Removing them from the **package** does not require deleting them from Git or the local project.
 
-`gitignore` rules and Pygbag packaging filters solve different problems: `.gitignore` does not automatically exclude already present local files from the Pygbag archive.
+`gitignore` rules and Pygbag packaging filters solve different problems: `../../.gitignore` does not automatically exclude already present local files from the Pygbag archive.
 
 ## Proposed change 1 — Package filtering (not yet applied)
 
-Add `pygbag.ini` at the project root, initially testing:
+Add `../../pygbag.ini` at the project root, initially testing:
 
 ```ini
 [DEPENDENCIES]
@@ -41,7 +41,7 @@ ignoredirs = [".venv", "docs", "assets", "scripts"]
 ignorefiles = []
 ```
 
-**Directory distinction:** Root `assets/` currently contains showcase media; runtime images and audio live under `src/assets/` and must remain packaged. Check this assumption again if the layout changes.
+**Directory distinction:** Root `../../assets` currently contains showcase media; runtime images and audio live under `../../src/assets` and must remain packaged. Check this assumption again if the layout changes.
 
 **Verify after rebuilding:** The console should list the new ignored directories. Inspect the new archive and play the browser game locally before publishing. Do **not** delete `.venv` or the video; only exclude them from packaging.
 
@@ -97,7 +97,7 @@ whether they are needed.
 
 ## References
 
-- Original notes: `docs/dev_steps_for_pygbag.md`, `docs/pygbag_browser_port_notes.md`
+- Original notes: `dev_steps_for_pygbag.md`, `pygbag_browser_port_notes.md`
 - Pygbag configuration source: https://github.com/pygame-web/pygbag
 - Packaging overview: https://deepwiki.com/pygame-web/pygbag/3.2-application-structure
 
