@@ -45,5 +45,8 @@ fi
 # install requirements
 uv pip install -r requirements.txt
 
+# TODO: When game fails to launch, save full log error to log file
+# Investigate whether Bash can prepare a command to open the log, ideally allowing the user to retrieve it with the ↑ arrow.
+
 # run game
 .venv/bin/python -m src.main
