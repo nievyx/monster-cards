@@ -25,4 +25,11 @@ async def main_async():
     await game.start_async()
 
 if __name__ == '__main__':
-    main()
+    import sys
+
+    try:
+        main()
+    except FileNotFoundError:
+        print('Game couldn\'t locate game asset.', file=sys.stderr)
+        print('try running game from project root: python -m src.main')
+        raise
