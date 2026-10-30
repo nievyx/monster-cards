@@ -14,3 +14,12 @@ check which you need by running this
 ```bash
 pwd
 ```
+
+# Without sound errors
+
+run from root:
+```bash
+uvx pygbag .
+```
+
+
