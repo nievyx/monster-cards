@@ -1,5 +1,4 @@
 import os
-import wave
 
 import sys
 
@@ -25,12 +24,13 @@ class SFX:
         sounds_name = spell.sfx_name
 
         if IS_BROWSER:
-            MUSIC_EXTENTSION = '-pygbag.ogg'
+            MUSIC_EXTENTSION = '.ogg'
         else:
             MUSIC_EXTENTSION = '.wav'
 
 
         sound_path = os.path.join(self.base_path, 'spells',f'{sounds_name}{MUSIC_EXTENTSION}')
+        print(sound_path) #TODO: delete sound work
 
         if not os.path.exists(sound_path):
             print(f"[SFX WARNING] Missing sound: {sound_path}")
