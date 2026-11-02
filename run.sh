@@ -18,13 +18,6 @@ cd "$(dirname "$0")" || exit
 echo -en "\nCurrent Work directory..:"
 pwd
 
-# TODO: move below uv check
-# Check package manager
-# if command -v apt != ""]; then
-#   echo "apt package manager detected"
-# fi
-
-
 # Check if uv is installed or exit program
 # Game relies on a slighter older version of python
 if command -v uv; then
@@ -33,12 +26,13 @@ else
   # Check package manager
   if command -v apt != ""]; then
     echo "apt package manager detected"
+    echo "uv not found! try : 'sudo apt install uv'"
+    exit 1
+  else
     echo "uv not found! try : 'sudo dnf install uv'"
+    echo "replace dnf with suitable package manager"
     exit 1
   fi
-  echo "uv not found! try : 'sudo dnf install uv'"
-  echo "replace dnf with suitable package manager"
-  exit 1
 fi
 
 # check if python 3.13
