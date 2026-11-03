@@ -28,6 +28,10 @@ else
     echo "apt package manager detected"
     echo "uv not found! try : 'sudo apt install uv'"
     exit 1
+  if command -v dnf != ""]; then
+    echo "dnf package manager detected"
+    echo "uv not found! try : 'sudo dnf install uv'"
+    exit 1
   else
     echo "uv not found! try : 'sudo dnf install uv'"
     echo "replace dnf with suitable package manager"
